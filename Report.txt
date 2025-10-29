@@ -1,0 +1,14 @@
+1. Command Implement
+The coreutil I rewrote was pwd. The script supports its two flags: -L(logical path) and -P(physical path). The default
+behavoir if no flags are provided is logical. I also put in a help display that gives the user instructions.
+
+2. I encountered numerous issues when writing this script:
+- I attempted to use basename and dirname initially to handle symlinks to replicate the function of -P but it ultimately failed. I discovered
+readlink was a simple command that retrieved the path that a symbolic link was pointing to.
+- Figuring out how to ensure that my function was pointing to the current working directory was a bit of a challenge as well. I decided to write
+a function that validates the directory by storing the directory and then attempting to cd into it.
+- Figuring out how to actually obtain the path wasn't simple. I eventually discovered that I could essentially work backwards in the file hierarchy 
+and build the path that way.
+
+3. No part of this was particularly easy. Providing the flag options was probably the easiest part as case statements and getopts are useful tools
+for providing user options. 
